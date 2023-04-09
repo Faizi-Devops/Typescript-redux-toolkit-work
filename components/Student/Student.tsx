@@ -1,5 +1,11 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { addUsers } from "@/store/UserdatialSlice";
+import type { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/store";
+
 type A = {
     Name:string,
     Email:string,
@@ -8,7 +14,8 @@ type A = {
 }
 
 const Student = () => {
-
+    type Dispatch = ThunkDispatch<RootState, unknown, AnyAction>;
+    const dispatch = useDispatch<Dispatch>();
     const [naming,setNaming] = useState<string>("");
     const [mailing,setMailing] = useState<string>("");
     const [aging,setAging] = useState<number>(0);
@@ -41,6 +48,8 @@ const Student = () => {
             Gender:gendering
         }
         console.log(adding)
+        const addUserAction = addUsers(adding);
+        dispatch(addUserAction)
         
     }
     return (
