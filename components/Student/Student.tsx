@@ -1,33 +1,47 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+type A = {
+    Name:string,
+    Email:string,
+    Age:number,
+    Gender:string
+}
 
 const Student = () => {
 
     const [naming,setNaming] = useState<string>("");
     const [mailing,setMailing] = useState<string>("");
-    const [aging,setAging] = useState<number>();
+    const [aging,setAging] = useState<number>(0);
     const [gendering,setGendering] = useState<string>("")
 
 
     const alpha = (e:any) =>{
-        console.log(e.target.value)
+        setNaming(e.target.value)
 
 
     }
     const beta = (e:any) =>{
-        console.log(e.target.value)
+        setMailing(e.target.value)
 
     }
     const gema = (e:any) =>{
-        console.log(e.target.value)
+        setAging(e.target.value)
 
     }
     const peta = (e:any) =>{
-        console.log(e.target.value)
+        setGendering(e.target.value)
 
     }
     const onAddHandler = () =>{
-        alert("hello")
+
+        let adding:A = {
+            Name:naming,
+            Email:mailing,
+            Age:aging,
+            Gender:gendering
+        }
+        console.log(adding)
+        
     }
     return (
 
