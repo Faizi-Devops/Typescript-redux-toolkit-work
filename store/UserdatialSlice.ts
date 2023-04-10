@@ -12,8 +12,15 @@ export interface a {
 
 }
 
-export const addUsers = createAsyncThunk<void,a>("adduser",(data,{rejectWithValue})=>{
+export const addUsers = createAsyncThunk<void,a>("adduser", async (data,{rejectWithValue})=>{
   try {
+    console.log("data in the slice",data)
+    const docRef = await addDoc(collection(db, "users"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
 
     
   } catch (error) {
